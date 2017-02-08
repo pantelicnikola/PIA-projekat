@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+        <ui:include src="includes/navbarAdmin.xhtml" ></ui:include>
+    </h:head>
+    <h:body>
+        
+        <h:form enctype="multipart/form-data">
+                 
+            <p:growl id="growl" sticky="true" showDetail="true"/>
+
+            <p:wizard flowListener="#{wizard.onFlowProcess}">
+                <p:tab id="fest" title="Festival info">
+                    <p:panel header="Festival Details">
+                        
+                        <h:panelGrid columns="2">
+                            
+                            <h:outputText value="Name: " />
+                            <p:inputText value="#{wizard.festival.name}" required="true" label="Name"/>
+
+                            <h:outputText value="Place: " />
+                            <p:inputText value="#{wizard.festival.place}" required="true" label="Place"/>
+
+                            <h:outputText value="Start Date: " />
+                            <p:calendar class="popup" value="#{wizard.festival.startDate}" pattern="yyyy-MM-dd" required="true" 
+                                        label="Start date"/>
+                            
+                            <h:outputText value="End Date: " />
+                            <p:calendar class="popup" value="#{wizard.festival.endDate}" pattern="yyyy-MM-dd" required="true" 
+                                        label="End date" mindate="#{wizard.festival.startDate}"/>
+                            
+                            <h:outputText value="Description: " />
+                            <p:inputText value="#{wizard.festival.description}" required="true" label="Description"/>
+                            
+                            <h:outputText value="Price pre day: " />
+                            <p:inputText value="#{wizard.festival.singleDay}" required="true" label="Price per Day"/>
+                            
+                            <h:outputText value="Price for all days: " />
+                            <p:inputText value="#{wizard.festival.allDays}" required="true" label="Price for all days"/>
+                            
+                            <h:outputText value="Max tickets per reservation: " />
+                            <p:inputText value="#{wizard.festival.ticketsPerReservation}" required="true" label="Tickets per Reservation"/>
+                            
+                            <h:outputText value="Max tickets per festival day: " />
+                            <p:inputText value="#{wizard.festival.ticketsPerDay}" required="true" label="Tickets per Day"/>
+                            
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="perf" title="Performer info">
+                    <p:panel header="Performer Details" id="panel">
+                        
+                        <h:panelGrid columns="2">
+                            
+                            <h:outputText />
+                            <p:messages id="messagesPerformer" showDetail="true" autoUpdate="true" closable="true" />
+                            
+                            <h:outputText value="Performer " />
+                            <p:inputText value="#{wizard.performer.id.performer}"/>
+
+                            <p:outputLabel for="datetime1" value="Start time" />
+                            <p:calendar id="datetime1" value="#{wizard.performer.startTime}" pattern="yyyy/MM/dd HH:mm:ss" 
+                                        mindate="#{wizard.festival.startDate}" maxdate="#{wizard.festival.endDate}"/>
+                            
+                            <p:outputLabel for="datetime2" value="End time" />
+                            <p:calendar id="datetime2" value="#{wizard.performer.endTime}" pattern="yyyy/MM/dd HH:mm:ss" 
+                                        mindate="#{wizard.performer.startTime}" maxdate="#{wizard.festival.endDate}"/>
+                            
+                            <p:outputLabel />
+                            <p:commandButton value="Add" action="#{wizard.addPerformer()}" />
+                            
+                            <p:outputLabel />
+                            <p:commandButton value="Reset" update="panel" process="@this"   />
+
+                        </h:panelGrid>
+                        
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="link" title="Link info">
+                    <p:panel header="Link Details" >
+                        
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Facebook Link: " />
+                            <p:inputText value="#{wizard.facebookLink}"/>
+
+                            <h:outputText value="Twitter Link: " />
+                            <p:inputText value="#{wizard.twitterLink}"/>
+                            
+                            <h:outputText value="Instagram Link: " />
+                            <p:inputText value="#{wizard.instagramLink}"/>
+                            
+                            <h:outputText value="Youtube Link: " />
+                            <p:inputText value="#{wizard.youtubeLink}"/>
+                            
+                        </h:panelGrid>
+                        
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="media" title="Add media">
+                    <p:panel header="Add Media">
+                        <h:panelGrid columns="1">
+                            
+                                <p:fileUpload fileUploadListener="#{wizard.handleFileUpload}" mode="advanced"
+                                                update="messages" auto="true" sizeLimit="1000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+                                <p:growl id="messages" showDetail="true" />
+                            
+
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                <p:tab id="review" title="Review">
+                    <p:panel header="Review">
+                        <h:panelGrid columns="2">
+                            <h:outputText />
+                            <p:messages id="messagesSubmit" showDetail="true" autoUpdate="true" closable="true" />
+                            <p:commandButton value="Submit" actionListener="#{wizard.save}" update="growl" process="@this"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+                
+                
+            </p:wizard>
+
+        </h:form>
+        <div id="footer"></div>
+    </h:body>
+</html>

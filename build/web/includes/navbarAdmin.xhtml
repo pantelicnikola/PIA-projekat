@@ -1,0 +1,42 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="admin.xhtml">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="addFestival.xhtml">Add festival</a></li>
+        <li><a href="allFestivals.xhtml">Change festival</a></li>
+        <li><a href="cancelFestival.xhtml">Cancel festival</a></li>
+        <li><a href="lastUsers.xhtml">Last users</a></li>
+        <li><a href="userRequests.xhtml">Requests</a></li>
+        <li><a href="scanJSON.xhtml">Scan JSON</a></li>
+        <li><a href="scanCSV.xhtml">Scan CSV</a></li>
+        <!-- Ovde uvaciti ostale tabove -->
+      </ul>
+      <h:form>
+        <ul class="nav navbar-nav navbar-right">
+            <li><h:commandLink value="Logout" action="#{userCtrl.logoutAdmin}"></h:commandLink></li>
+        </ul>
+      </h:form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    
+</ui:composition>

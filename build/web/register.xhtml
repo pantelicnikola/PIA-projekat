@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Register Page</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+        <ui:include src="includes/navbar.xhtml" ></ui:include>
+        
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+		<div class="col-xs-12">
+                    <f:view>
+                        <h:form id="registerForm" styleClass="form-horizontal">
+                            
+                            <div class="form-group">
+                                <div class="control-label col-sm-2"></div>
+                                <h:outputText value="#{userCtrl.registerMessage}" styleClass="col-sm-10 text-danger"/>
+                            </div>
+                            
+                            <div class="form-group">
+                                <h:outputText value="Enter Your Username:" styleClass="control-label col-sm-2"/>
+                                <div class="col-sm-10">
+                                    <h:inputText id="uname" value="#{userCtrl.username}" required="true" requiredMessage="Please enter your username" styleClass="form-control"></h:inputText>
+                                    <h:message for="uname" style="color:red" styleClass="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <h:outputText value="Enter Your First Name" styleClass="control-label col-sm-2"/>
+                                <div class="col-sm-10">
+                                    <h:inputText id="fname" value="#{userCtrl.firstName}" required="true" requiredMessage="Please enter your first name" styleClass="form-control"></h:inputText>
+                                    <h:message for="fname" style="color:red" styleClass="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <h:outputText value="Enter Your Last Name" styleClass="control-label col-sm-2"/>
+                                <div class="col-sm-10">
+                                    <h:inputText id="lname" value="#{userCtrl.lastName}" required="true" requiredMessage="Please enter your last name" styleClass="form-control"></h:inputText>
+                                    <h:message for="lname" style="color:red" styleClass="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <h:outputText value="Enter Your Email" styleClass="control-label col-sm-2"/>
+                                <div class="col-sm-10">
+                                    <h:inputText id="email" value="#{userCtrl.email}" required="true" requiredMessage="Please enter your email" styleClass="form-control"></h:inputText>
+                                    <h:message for="email" style="color:red" styleClass="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <h:outputText value="Enter Your Password" styleClass="control-label col-sm-2"/>
+                                <div class="col-sm-10">
+                                    <h:inputSecret id="psw" value="#{userCtrl.password}" required="true" requiredMessage="Please enter your password" styleClass="form-control">
+                                        <f:validateRegex pattern="^[a-zA-Z](?=.{6,12}$)(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9])(?:([\w\d*?!:;])\1?(?!\1))+$"/>
+                                    </h:inputSecret>
+                                    <h:message for="psw" style="color:red" styleClass="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <h:outputText value="Re-Enter Your Password" styleClass="control-label col-sm-2"/>
+                                <div class="col-sm-10">
+                                    <h:inputSecret id="ppsw" value="#{userCtrl.ppassword}" required="true" requiredMessage="Please enter your password" styleClass="form-control"></h:inputSecret>
+                                    <h:message for="ppsw" style="color:red" styleClass="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <h:outputText value="Enter Your Phone" styleClass="control-label col-sm-2"/>
+                                <div class="col-sm-10">
+                                    <h:inputText id="phn" value="#{userCtrl.phone}" required="true" requiredMessage="Please enter your phone" styleClass="form-control"></h:inputText>
+                                    <h:message for="phn" style="color:red" styleClass="form-control" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+                                    <h:commandButton action="#{userCtrl.register}" value="Register" styleClass="btn btn-default"/>
+				</div>
+                            </div>
+
+                        </h:form>
+                    </f:view>
+                </div>
+            </div>
+        </div>    
+        <div id="footer"></div>
+    </h:body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Festival</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+        <h:outputStylesheet library="css" name="bootstrap-social.css"></h:outputStylesheet>
+        <ui:include src="#{util.setNavbar()}" ></ui:include>
+    </h:head>
+    <h:body>
+        <p:messages id="messagesFestival" showDetail="true" autoUpdate="true" closable="true" />
+        <h:panelGrid  columns="2" cellpadding="5" styleClass="ui-grid">
+            <h:outputLabel value="Festival: "/>
+            <h:outputText value="#{festCtrl.selectedLst.get(0)[0]}"></h:outputText>
+            <h:outputLabel value="Location: "/>
+            <h:outputText value="#{festCtrl.selectedLst.get(0)[1]}"></h:outputText>
+            <h:outputLabel value="End Date: "/>
+            <h:outputText value="#{festCtrl.selectedLst.get(0)[2]}"></h:outputText>
+            <h:outputLabel value="Start Date: "/>
+            <h:outputText value="#{festCtrl.selectedLst.get(0)[3]}"></h:outputText>
+            <h:outputLabel value="Rating: "/>
+            <h:outputText value="#{festCtrl.selectedFestivalRating}"></h:outputText>
+            <h:outputLabel value="Description:&#160;&#160;"/>
+            <h:outputText value="#{festCtrl.selectedLst.get(0)[6]}"></h:outputText>
+            <br />
+        </h:panelGrid>
+        
+        <h:panelGrid  style="width: 600px">
+            <p:dataTable value="#{festCtrl.lstPerformers}" var="perf" class="singleDT" >
+
+                <p:column headerText="Performer">#{perf[0]}</p:column>
+                <p:column headerText="StartTime">#{perf[1]}</p:column>
+                <p:column headerText="EndTime">#{perf[2]}</p:column>
+
+            </p:dataTable>
+        </h:panelGrid>    
+        
+        
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5" styleClass="ui-grid">
+                
+
+                <h:outputLabel for="minMax" value="Number of tickets: " />
+                <p:spinner class="minMax" value="#{festCtrl.ticketCount}" min="1" max="#{festCtrl.ticketsPerReservation}" />
+                
+                <h:outputLabel for="minMax" value="Day: " />
+                <p:spinner class="minMax" value="#{festCtrl.dayNumber}" min="0" max="#{festCtrl.diffDays}" />
+                <p>* 0 for all days</p>
+                
+            </h:panelGrid>
+
+            <p:commandButton value="Submit"  action="#{festCtrl.submitReservation}" />
+
+            
+        </h:form>
+        <h:form>
+            <div class="col-md-12">
+
+                <h:commandLink action="#{festCtrl.getFacebookLink}" target="_blank" class="btn-social btn-facebook"  >
+                    <i class="fa fa-facebook"></i>
+                </h:commandLink>
+                
+                <h:commandLink action="#{festCtrl.getTwitterLink}" class="btn-social btn-twitter"  >
+                    <i class="fa fa-twitter"></i>
+                </h:commandLink>
+                
+                <h:commandLink action="#{festCtrl.getYoutubeLink}" class="btn-social btn-youtube"  >
+                    <i class="fa fa-youtube"></i>
+                </h:commandLink>
+                
+                <h:commandLink action="#{festCtrl.getInstagramLink}" class="btn-social btn-instagram"  >
+                    <i class="fa fa-instagram"></i>
+                </h:commandLink>
+
+                
+            </div>
+        </h:form>
+            
+        <h:panelGrid  style="width: 600px">
+            <p:dataTable value="#{festCtrl.selectedFestivalReviews}" var="rev" class="singleDT" >
+
+                <p:column headerText="Comment">#{rev[0]}</p:column>
+                <p:column headerText="Date">#{rev[1]}</p:column>
+                <p:column headerText="Username">#{rev[2]}</p:column>
+
+            </p:dataTable>
+        </h:panelGrid>   
+        <div id="footer"></div>
+    </h:body>
+</html>

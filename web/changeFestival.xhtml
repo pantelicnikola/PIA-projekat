@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+        <ui:include src="includes/navbarAdmin.xhtml" ></ui:include>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="205">
+                <h:outputLabel value="Name"/>
+                <h:inputText value="#{upFest.selectedFestival.name}"></h:inputText>
+                <h:outputLabel value="Place"/>
+                <h:inputText value="#{upFest.selectedFestival.place}"></h:inputText>
+                <h:outputLabel value="Start Date"/>
+
+                <p:calendar id="datetime1" value="#{upFest.selectedFestival.startDate}" pattern="yyyy/MM/dd HH:mm:ss" />
+                <h:outputLabel value="End Date"/>
+                <p:calendar id="datetime2" value="#{upFest.selectedFestival.endDate}" pattern="yyyy/MM/dd HH:mm:ss" />
+                <h:outputLabel value="Description"/>
+                <h:inputText value="#{upFest.selectedFestival.description}"></h:inputText>
+                <h:outputLabel value="Single Day Cost"/>
+                <h:inputText value="#{upFest.selectedFestival.singleDay}"></h:inputText>
+                <h:outputLabel value="All days cost"/>
+                <h:inputText value="#{upFest.selectedFestival.allDays}"></h:inputText>
+                
+                <h:commandButton value="Update festival" action="#{upFest.submitChanges}"></h:commandButton>
+                
+
+            </h:panelGrid>
+            
+            
+        </h:form>
+        <div id="footer"></div>
+    </h:body>
+</html>
