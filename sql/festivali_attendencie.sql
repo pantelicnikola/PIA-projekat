@@ -1,0 +1,56 @@
+CREATE DATABASE  IF NOT EXISTS `festivali` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `festivali`;
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
+--
+-- Host: localhost    Database: festivali
+-- ------------------------------------------------------
+-- Server version	5.6.17
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `attendencie`
+--
+
+DROP TABLE IF EXISTS `attendencie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `attendencie` (
+  `IdFestival` int(11) NOT NULL,
+  `Performer` varchar(45) NOT NULL,
+  `StartTime` timestamp NULL DEFAULT NULL,
+  `EndTime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`IdFestival`,`Performer`),
+  CONSTRAINT `IdFestival` FOREIGN KEY (`IdFestival`) REFERENCES `festival` (`IdFestival`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `attendencie`
+--
+
+LOCK TABLES `attendencie` WRITE;
+/*!40000 ALTER TABLE `attendencie` DISABLE KEYS */;
+INSERT INTO `attendencie` VALUES (3,'Elemental','2017-08-17 08:45:00','2017-08-17 09:45:00'),(3,'LET 3','2017-08-17 22:00:00','2017-08-17 23:00:00'),(3,'Rudimental Live','2017-08-17 07:15:00','2017-08-17 08:30:00'),(3,'Viva Vox','2017-08-17 06:00:00','2017-08-17 07:00:00'),(27,'Zdravko','2017-01-14 23:00:00','2017-01-14 23:00:00'),(29,'asdasdasd','2017-01-14 23:00:00','2017-01-14 23:00:00'),(29,'asdasdasdasdasdasd','2017-01-14 23:00:00','2017-01-14 23:00:00'),(29,'lkj','2017-01-14 23:00:00','2017-01-14 23:00:00'),(30,'Bjelo Dugme','2017-01-18 23:00:00','2017-01-19 02:00:00'),(33,'Bajaga','2017-08-17 06:00:00','2017-08-17 08:00:00'),(33,'Elemental','2017-08-17 08:45:00','2017-08-17 09:45:00'),(33,'Kerber','2017-08-20 09:00:00','2017-08-20 23:00:00'),(33,'LET 3','2017-08-17 22:00:00','2017-08-17 23:00:00'),(33,'Riblja Corba','2017-08-18 06:00:00','2017-08-18 08:00:00'),(33,'Rudimental Live','2017-08-17 07:15:00','2017-08-17 08:30:00'),(33,'Viva Vox','2017-08-17 06:00:00','2017-08-17 07:00:00'),(33,'YU Grupa','2017-08-19 07:00:00','2017-08-19 09:00:00');
+/*!40000 ALTER TABLE `attendencie` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-01-26 14:17:59
